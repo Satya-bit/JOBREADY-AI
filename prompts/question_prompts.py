@@ -5,7 +5,7 @@ def get_question_generation_prompt(resume_text: str,job_description: str, round_
     # Round-specific instructions (which can be expanded)
     round_instructions = {
         "HR": "Focus on behavioral questions, cultural fit, salary expectations (ask indirectly), and general background.",
-        "Technical": "Focus on specific technical skills, technologies, and project experiences mentioned in the resume.Alwasy, always, always ask technical questions related to the job description's mentioned skills and technologies, never forget this part. So this round should be mixture of questions asked from both resume and job description.",
+        "Technical": "Focus on specific technical skills, technologies, and project experiences mentioned in the resume., Also ask technical questions related to the job description's mentioned skills and technologies, never forget this part. So this round should be mixture of questions asked from both resume and job description. Include questions from both resume and job description",
         "Managerial": "Focus on leadership potential, team collaboration, conflict resolution, project management approaches, and career goals.",
         "General": "Ask a mix of behavioral, situational, resume-based and job description questions."
     }

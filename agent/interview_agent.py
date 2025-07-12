@@ -19,7 +19,7 @@ class InterviewAgent:
         """Generates questions for the specified round using LLM."""
         print(f"\nGenerating {num_questions} questions for the {round_name} round based on your resume...")
         prompt = get_question_generation_prompt(self.resume_text,self.job_description, round_name, num_questions)
-        raw_response = generate_completion(prompt, max_tokens=300 * num_questions, temperature=0.7) # Allow more tokens
+        raw_response = generate_completion(prompt, max_tokens=300 * num_questions, temperature=1.0) # Allow more tokens
 
         # Trying to parse the response as a Python list
         try:
