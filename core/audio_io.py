@@ -1,6 +1,12 @@
-# This file is responsible for handling audio input/output operations, including text-to-speech, audio recording, and transcription.
-# For audio generation this uses elevenlabs API and for transcription it uses SpeechRecognition library with Google Web Speech API.
-# Still the speech recognition(transcription) is not perfect using Google Web Speech API and can fail in some cases. But can be improved by using better audio quality. Due to time constraints I have kept this for later part.
+# This file is responsible for handling audio input/output operations,
+# including text-to-speech, audio recording, and transcription.
+
+# For audio generation this uses elevenlabs API and for transcription it uses SpeechRecognition 
+# library with Google Web Speech API.
+
+# Still the speech recognition(transcription) is not perfect using Google Web Speech API 
+# and can fail in some cases. But can be improved by using better audio quality. 
+# Due to time constraints I have kept this for later part.
 
 
 import sounddevice as sd
