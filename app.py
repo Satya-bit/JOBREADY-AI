@@ -236,22 +236,21 @@ if st.session_state.stage == 'ats':
     submit3 = st.button("Percentage Match")
 
     input_prompt1 = """
-    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering.
+    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering, AI Engineer.
     Your task is to review the provided resume against the job description for these profiles.
     Please share your professional evaluation on whether the candidate's profile aligns with the role.
     Highlight the strengths and weakness of the applicant in relation to specified job requirements.
     """
 
     input_prompt2 = """
-    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering.
+    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering, AI Engineer.
     Your task is to review the provided resume against the job description for these profiles.
     Please share your professional evaluation on whether are there any missing keywords in the resume that are mentioned in the job description.
     Just provide the exact missing keywords in bullet points.
     """
 
     input_prompt3 = """
-    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of any one job role from Data Science, Full stack Web Development, Big Data Engineering, DEVOPS
-    Data Analyst, Machine Learning, LLM engineering and deep ATS functionality.
+    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering, AI Engineer.
     Your task is to evaluate the resume against the provided job description.
     Give me the percentage of match if the resume matches the job description. First the output should come as percentage and then keywords missing and last final thoughts.
     """
