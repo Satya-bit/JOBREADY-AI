@@ -21,50 +21,69 @@ Demo Link-
 
 -ATS Friendly feedback and scores.
 **=>USER INTERFACE**
+<img width="1911" height="932" alt="image" src="https://github.com/user-attachments/assets/65443466-4159-4b31-ae87-e90de6a7652f" />
 
 **1) Enter Job Description**   
+
+<img width="1889" height="889" alt="image" src="https://github.com/user-attachments/assets/76c3bef4-a4ab-4166-b7e3-77a156d8b31b" />
 
 
 **Job Description from LinkedIn which I entered**
 
+<img width="1667" height="835" alt="image" src="https://github.com/user-attachments/assets/86ba200b-b1d4-4782-8f91-2bd4ac5ec954" />
 
 
 **2) Upload the resume**
 
+<img width="1737" height="771" alt="image" src="https://github.com/user-attachments/assets/fdf967a7-29cf-44d2-b14e-48e6ad3a44b6" />
 
 
 **My Resume**
 
+<img width="688" height="990" alt="image" src="https://github.com/user-attachments/assets/9de6d2f0-4784-4f4f-b8e2-3345934642fd" />
 
 
 **3) Select round**
 
+<img width="1746" height="752" alt="image" src="https://github.com/user-attachments/assets/4137552e-291b-42bd-a584-be8b7b673939" />
 
 
+**4) The agent asks the question relvant to Job description and Resume(a voice is heard from the AI interview agent, this is done using Eleven Labs API, not possible to show this just by pictures). Just vague answer for this question- User can either record or submit text answers.**
 
-**4) The agent asks the question(voice is heard, this is done using Eleven Labs API, not possible to show this just by pictures). Just vague answers- User can either record or submit text answers.**
-
-
+<img width="1719" height="906" alt="image" src="https://github.com/user-attachments/assets/15352ad4-0799-4da7-a78a-74e020296705" />
 
 
 **5) Relevant Answer**
 
-
+<img width="1708" height="817" alt="image" src="https://github.com/user-attachments/assets/b5bfc620-000d-407a-8234-46cb226236b7" />
 
 
 **6) You can see the questions are asked based on Job description and my Resume.**
 
 
-
 **7) Feedback with scores. In the end the user can see the total scores**
 
+<img width="1216" height="932" alt="image" src="https://github.com/user-attachments/assets/f7b19333-4b90-48ab-b2e2-5cee09334ad4" />
 
-**8) You can also see the ATS friendly feedback.**
+**8) An example of question being asked for HR Round.**
 
+<img width="1706" height="643" alt="image" src="https://github.com/user-attachments/assets/21eb2f5d-84d8-4802-bf71-faacc317372e" />
+
+**9) You can also see the ATS friendly feedback.**
+
+<img width="1580" height="745" alt="image" src="https://github.com/user-attachments/assets/3998e876-6223-4523-ac1a-025f5b2d3abd" />
+
+   **-Tell me about the Resume:** It will tell whether the candidate's profile aligns with the role. It will also tell about the strength and weakness of the candidate.
+
+   **-What are the keywords that are missing:** It will display any keywords that are missing in the resume. 
+
+   **-Percentage Match:** It tells about how much % the match is between job dscription and resume.
+**Note**-Only two questions are being asked in this demo. The number of questions can be increased as needed by the AI.
 
 **=>System Architecture**
 
 <img width="1321" height="560" alt="image" src="https://github.com/user-attachments/assets/5dba41f3-bff9-42ab-b932-399b212a23e9" />
+<img width="1011" height="331" alt="image" src="https://github.com/user-attachments/assets/d528f91c-a23e-409b-9455-621df1444614" />
 
 
 
@@ -114,7 +133,7 @@ Streamlit- For Frontend
 
 GEMINI API (gemini-2.0-Flash & gemini-2.5-Pro)- For LLM Service
 
-<img width="274" height="106" alt="image" src="https://github.com/user-attachments/assets/899ad2c6-bdd8-45e8-8aff-abf7420b2217" />
+<img width="650" height="210" alt="image" src="https://github.com/user-attachments/assets/3fdf22f9-f46e-4a88-8d04-7a7c70b85f54" />
 
 ElevenLabs(eleven_multilingual_v2)- For giving voice
 
