@@ -74,10 +74,14 @@ Demo Link-
 <img width="1580" height="745" alt="image" src="https://github.com/user-attachments/assets/3998e876-6223-4523-ac1a-025f5b2d3abd" />
 
    **-Tell me about the Resume:** It will tell whether the candidate's profile aligns with the role. It will also tell about the strength and weakness of the candidate.
+    <img width="1121" height="917" alt="image" src="https://github.com/user-attachments/assets/7e763a25-e353-4444-9cb9-e3f24afdbf1e" />
 
    **-What are the keywords that are missing:** It will display any keywords that are missing in the resume. 
+    <img width="890" height="538" alt="image" src="https://github.com/user-attachments/assets/b0ecbf09-141b-4928-9a4c-a80755196bf2" />
 
    **-Percentage Match:** It tells about how much % the match is between job dscription and resume.
+   <img width="832" height="282" alt="image" src="https://github.com/user-attachments/assets/a4e5a29a-92f7-4a43-bb43-e223d5ae28d9" />
+
 **Note**-Only two questions are being asked in this demo. The number of questions can be increased as needed by the AI.
 
 **=>System Architecture**
