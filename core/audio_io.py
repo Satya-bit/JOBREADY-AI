@@ -30,7 +30,8 @@ from utils.config import (
 # Initialize recognizer
 r = sr.Recognizer()
 
-def speak_text(text: str):
+def speak_text(text: str): #text to speech
+    """Generates speech from text using ElevenLabs API and plays it."""
    
 
     try:
@@ -60,6 +61,7 @@ def speak_text(text: str):
         time.sleep(len(text.split()) / 3) # Approximate delay
 
 
+# Record audio and saves it to a file
 def record_audio(duration: int = 12, filename: str = TEMP_AUDIO_FILENAME) -> str | None:
     """Records audio from the microphone for a specified duration."""
     print(f"\n🎙️ Recording for {duration} seconds... Speak clearly into the microphone.")
@@ -77,7 +79,7 @@ def record_audio(duration: int = 12, filename: str = TEMP_AUDIO_FILENAME) -> str
         # recording /= np.max(np.abs(recording)) if np.max(np.abs(recording)) > 0 else 1
 
         # Saves as WAV file using soundfile
-        sf.write(filename, recording, RECORDING_SAMPLE_RATE, subtype='PCM_16')
+        sf.write(filename, recording, RECORDING_SAMPLE_RATE, subtype='PCM_16') #pcm_16 commonly uncompressed used format for audio files
 
         print(f"✅ Recording saved to {filename}")
 
@@ -85,6 +87,8 @@ def record_audio(duration: int = 12, filename: str = TEMP_AUDIO_FILENAME) -> str
     except Exception as e:
         print(f"Error during audio recording: {e}")
         return None
+
+#Speech to text transcription using Google Web Speech API
 def transcribe_audio(filename: str = TEMP_AUDIO_FILENAME) -> str | None:
     """Transcribes audio file to text using SpeechRecognition (Google Web Speech API)."""
     print("Transcribing your response...")

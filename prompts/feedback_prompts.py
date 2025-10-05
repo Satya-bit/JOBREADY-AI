@@ -42,12 +42,13 @@ def get_feedback_prompt(resume_text: str,job_description: str, round_name: str, 
     2. Give specific suggestions for improvement based on their answers. Give as Suggestions. Donot provide summary of the feedback, just suggestions.
     3. Score each answer individually based on the provided criteria as Q1 Score: x/10, Q2 Score: y/10, etc. Follow this strictly and no other formats, everytime you generate answer. And then also give individual scores for each criteria mentioned above per question, like score for Relevance, Clarity, Detail/Examples, and Resume Alignment for individual question.
        For example, for Question 2, you might follow format like this:
-       Q2- question asked by you
+       Q2- question asked by you to the candidate in the interview (Donot include this line in the answer, keep the original question you asked)
        Relevance: 0/3 (Answer “no idea” does not address the question)  
        Clarity: 1/2 (Clear but unhelpful)  
        Detail/Examples: 0/3 (No explanation or example)  
        Resume Alignment: 0/2 (No alignment shown) 
        Q2 Overall Score: 1/10 
+       All of the above 6 should be in new line
     4. Calculate a total score for the round (sum of individual scores) as Total Score: x/10. Follow this format strictly and no other formats, everytime you generate answer.
        For example, you might follow format like this:
        Total Score: 4/10
