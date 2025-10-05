@@ -3,6 +3,7 @@
 # If the text is too short or PyMuPDF fails, it falls back to OCR using Tesseract.
 # So we can also handle scanned PDFs using tesseract OCR.
 # For DOCX files, it uses python-docx to extract text.
+#Handles different formats
 
 import os
 
