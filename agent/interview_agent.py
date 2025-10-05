@@ -58,4 +58,3 @@ class InterviewAgent:
                     "Where do you see yourself in 5 years?",
                     "Do you have any questions for me?" # Always good to include
                 ][:num_questions]
-
