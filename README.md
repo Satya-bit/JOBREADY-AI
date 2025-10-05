@@ -1,4 +1,4 @@
-**AI MOCK INTERVIEW AGENT (voice based)**
+**JOBREADY AI- AI Powered Interview agent & ATS Tracker**
 
 **=>DEMO LINK**
 
@@ -7,7 +7,7 @@ Demo Link-
 
 **=>What does this platform offer?**
 
--Role-specific question generation. Different question generation for practice.
+-Role specific question generation. Different question generation for practice.
 
 -Supports PDF(even scanned) & Word file for resume.
 
