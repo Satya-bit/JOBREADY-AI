@@ -1,5 +1,5 @@
 # This function is responsible for generating interview questions based 
-# on the resume and job description.
+# on the resume and job description user enters.
 def get_question_generation_prompt(resume_text: str,job_description: str, round_name: str, num_questions: int = 5) -> str:
     """Creates a prompt to generate interview questions."""
     # Round-specific instructions (which can be expanded)
