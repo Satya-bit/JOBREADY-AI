@@ -6,6 +6,10 @@ import os
 import time
 import traceback 
 import re
+import google.generativeai as genai
+import pdf2image
+import io
+import base64
 # Importing the existing modules
 from core.resume_parser import parse_resume
 from agent.round_manager import AVAILABLE_ROUNDS
@@ -14,9 +18,13 @@ from core.audio_io import speak_text, transcribe_audio,record_audio
 from core.feedback_generator import generate_feedback_and_scores
 from utils.config import TEMP_AUDIO_FILENAME 
 from utils import config # checks if keys are loaded properly
+from PIL import Image
+
+
+
 
 # --- Streamlit App Configuration ---
-st.set_page_config(page_title="PREPWISE AI", layout="wide")
+st.set_page_config(page_title="JOBREADY AI", layout="wide")
 
 # Inject robust CSS for background, fonts and controls (uses strong selectors and !important)
 st.markdown("""
@@ -68,8 +76,8 @@ a, a:visited { color: var(--accent) !important; }
 # --- Sidebar Info ---
 st.sidebar.header("About")
 st.sidebar.info(
-"PREPWISE AI helps you practice interviews with AI-powered voice and text conversations."
-"Built using OpenAI and ElevenLabs, it offers instant feedback and scoring to sharpen your skills and boost your confidence before the real interview."
+"JOBREADY AI helps you practice interviews with AI-powered voice and text conversations featured with ATS(Applicant Tracking System) friendly feedback."
+"Built using Gemini and ElevenLabs, it offers instant feedback and scoring to sharpen your skills and boost your confidence before the real interview."
 )
 
 UPLOAD_DIR = "data/uploads" # Saves resume Files
@@ -98,10 +106,42 @@ def cleanup_temp_file(file_path):
     except Exception as e:
         st.warning(f"Could not remove temporary file {file_path}: {e}")
 
+# --- ATS helper functions ---
+def get_gemini_response(input_text, pdf_content, prompt):
+    """Call Google GenAI (gemini) via genai client and return text."""
+    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+    model = genai.GenerativeModel("gemini-2.5-flash")
+    response = model.generate_content([input_text, pdf_content[0], prompt])
+    # response may be an object; return .text when available
+    return getattr(response, 'text', str(response))
+
+
+def input_pdf_setup(uploaded_file):
+    """Convert first PDF page to a base64-encoded JPEG part expected by Gemini."""
+    if uploaded_file is not None:
+        # Convert the uploaded PDF bytes to images (first page)
+        images = pdf2image.convert_from_bytes(uploaded_file.read())
+        first_page = images[0]
+
+        # Convert to bytes
+        img_byte_arr = io.BytesIO()
+        first_page.save(img_byte_arr, format='JPEG')
+        img_bytes = img_byte_arr.getvalue()
+
+        pdf_parts = [
+            {
+                "mime_type": "image/jpeg",
+                "data": base64.b64encode(img_bytes).decode()
+            }
+        ]
+        return pdf_parts
+    else:
+        raise FileNotFoundError("File not uploaded")
+
 
 # --- Initializing Session State ---
 if 'stage' not in st.session_state:
-    st.session_state.stage = 'job_description' # Initial stage
+    st.session_state.stage = 'home' # Initial landing stage
 if 'resume_text' not in st.session_state:
     st.session_state.resume_text = None
 if 'interview_agent' not in st.session_state:
@@ -126,19 +166,145 @@ if not keys_loaded:
     st.stop() 
 # --- Main App Logic ---
 
-st.title("🎯 PREPWISE AI")
-st.markdown("Enter a job description and upload your resume, choose an interview round, and practice with an AI interviewer!")
+st.title("🎯 JOBREADY AI")
+st.markdown("ATS Tracker-Track your ATS score by entering the job description and resume.")
+st.markdown("Mock AI Interview-Enter a job description and upload your resume, choose an interview round, and practice with an AI interviewer!")
+
+# Landing / Home page
+if st.session_state.stage == 'home':
+    # Landing CSS for large buttons
+    st.markdown("""
+    <style>
+    .landing-row { display:flex; justify-content:center; gap:40px; margin-top:30px; }
+    .landing-btn { padding: 22px 36px !important; font-size:20px !important; border-radius:10px !important; }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("## Welcome to JOBREADY AI")
+    st.markdown("Choose an option to get started:")
+
+    col1, col2, col3 = st.columns([1,2,1])
+    with col2:
+        # Place buttons centered and large
+        c1, c2 = st.columns([1,1])
+        with c1:
+            if st.button("ATS Tracker", key="ats_btn"):
+                # Placeholder: switch to an 'ats' stage or implement ATS tracker flow later
+                st.session_state.stage = 'ats'
+                st.rerun()
+        with c2:
+            if st.button("Mock AI Interview", key="mock_btn"):
+                # Start the existing interview flow by going to the job description stage
+                st.session_state.stage = 'job_description'
+                st.rerun()
+
+    # Stop further rendering on the landing page
+    st.stop()
+
+# --- ATS Tracker page ---
+if st.session_state.stage == 'ats':
+    st.header("ATS Tracking System")
+    # Strong CSS override for ATS Job Description textarea: force black text on white background
+    st.markdown('''
+        <style>
+        /* Target textarea and contenteditable areas whose aria-label starts with 'Job Description' */
+        textarea[aria-label^="Job Description"],
+        div[aria-label^="Job Description"],
+        .stTextArea textarea[aria-label^="Job Description"],
+        .stTextArea div[aria-label^="Job Description"],
+        .stTextArea div[role="textbox"][aria-label^="Job Description"],
+        /* Also target generic contenteditable children to cover different Streamlit versions */
+        .stTextArea [contenteditable="true"] {
+            color: #000000 !important;
+            -webkit-text-fill-color: #000000 !important;
+            background-color: #ffffff !important;
+            caret-color: #000000 !important;
+        }
+        /* Ensure placeholder color is readable */
+        textarea::placeholder, .stTextArea textarea::placeholder { color: rgba(0,0,0,0.45) !important; }
+        </style>
+    ''', unsafe_allow_html=True)
+
+    input_text = st.text_area("Job Description:", key="ats_input")
+    uploaded_file = st.file_uploader("Upload your resume (PDF)...", type=["pdf"])
+
+    if uploaded_file is not None:
+        st.write("PDF Uploaded successfully")
+
+    submit1 = st.button("Tell me about the Resume")
+    submit2 = st.button("What are the keywords that are missing")
+    submit3 = st.button("Percentage Match")
+
+    input_prompt1 = """
+    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering.
+    Your task is to review the provided resume against the job description for these profiles.
+    Please share your professional evaluation on whether the candidate's profile aligns with the role.
+    Highlight the strengths and weakness of the applicant in relation to specified job requirements.
+    """
+
+    input_prompt2 = """
+    You are an experienced HR with Tech experience in the field of any one job role from Data Science, Full stack Web Development, Big Data Engineering,DEVOPS, Data Analyst, Machine Learning, LLM engineering.
+    Your task is to review the provided resume against the job description for these profiles.
+    Please share your professional evaluation on whether are there any missing keywords in the resume that are mentioned in the job description.
+    Just provide the exact missing keywords in bullet points.
+    """
+
+    input_prompt3 = """
+    You are an skilled ATS (Applicant Tracking System) scanner with a deep understanding of any one job role from Data Science, Full stack Web Development, Big Data Engineering, DEVOPS
+    Data Analyst, Machine Learning, LLM engineering and deep ATS functionality.
+    Your task is to evaluate the resume against the provided job description.
+    Give me the percentage of match if the resume matches the job description. First the output should come as percentage and then keywords missing and last final thoughts.
+    """
+
+    if submit1:
+        if uploaded_file is not None:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_text, pdf_content, input_prompt1)
+            # st.subheader("The response is")
+            st.write(response)
+        else:
+            st.write("Please upload the resume")
+
+    elif submit2:
+        if uploaded_file is not None:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_text, pdf_content, input_prompt2)
+            # st.subheader("The response is")
+            st.write(response)
+        else:
+            st.write("Please upload the resume")
+
+    elif submit3:
+        if uploaded_file is not None:
+            pdf_content = input_pdf_setup(uploaded_file)
+            response = get_gemini_response(input_text, pdf_content, input_prompt3)
+            # st.subheader("The response is")
+            st.write(response)
+        else:
+            st.write("Please upload the resume")
+
+    if st.button("Back to Home"):
+        st.session_state.stage = 'home'
+        st.rerun()
+
+    st.stop()
 
 
 if st.session_state.stage == 'job_description':
-    # Override dark theme locally for the job description input so fonts are black on white
+    # Strong override so the Job Description textarea shows black text on white
     st.markdown("""
     <style>
-    /* Target Streamlit textarea and its label - applied only while this markdown is present */
-    [data-testid="stTextArea"] textarea, .stTextArea>div>div>textarea {
+    /* Target the specific Job Description textarea by aria-label when available, then fall back to stTextArea selectors */
+    textarea[aria-label="Job Description"],
+    .stTextArea textarea[aria-label="Job Description"],
+    [data-testid="stTextArea"] textarea[aria-label="Job Description"],
+    /* Fallback selectors to catch different Streamlit versions */
+    .stTextArea textarea, .stTextArea div[role="textbox"], [data-testid="stTextArea"] textarea, [data-testid="stTextArea"] div[role="textbox"] {
         color: #000000 !important;
         background-color: #ffffff !important;
         border: 1px solid rgba(0,0,0,0.12) !important;
+        caret-color: #000000 !important;
+        -webkit-text-fill-color: #000000 !important;
     }
     /* Label and helper text */
     [data-testid="stTextArea"] label, .stTextArea label, .stTextArea .stMarkdown {
@@ -495,12 +661,10 @@ if st.session_state.stage == 'feedback':
     # --- Option to Upload New Resume ---
     if st.button("Upload New Resume"):
          # Resets everything including resume and agent
-        # Clean up the old resume file if present
         try:
             cleanup_temp_file(st.session_state.get('temp_resume_path'))
         except Exception:
             pass
-
         # Preserve a small set of keys we want to keep (e.g., job description)
         preserved = {}
         if 'job_description' in st.session_state:
@@ -520,6 +684,25 @@ if st.session_state.stage == 'feedback':
 
         # Reset to upload stage so user can upload a new resume
         st.session_state.stage = 'upload'
+        st.rerun()
+
+    # --- Back to Home (clear all context) ---
+    if st.button("Back to Home"):
+        # Remove any temporary resume file if present
+        try:
+            cleanup_temp_file(st.session_state.get('temp_resume_path'))
+        except Exception:
+            pass
+
+        # Clear entire session state so all context is forgotten
+        for key in list(st.session_state.keys()):
+            try:
+                del st.session_state[key]
+            except Exception:
+                pass
+
+        # Set stage to home and rerun the app
+        st.session_state.stage = 'home'
         st.rerun()
 
 

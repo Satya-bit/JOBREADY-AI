@@ -2,11 +2,8 @@
 
 **=>DEMO LINK**
 
-Demo Link- https://drive.google.com/file/d/17-T8bA7h-7s3fD9Me5yYYSFDmRtUC4dL/view 
+Demo Link- 
 
-**=>REPORT LINK**
-
-Report Link- https://drive.google.com/file/d/1O7i19UQc-kBeo5w8_z8NonKHHXgECiW0/view?usp=sharing
 
 **=>What does this platform offer?**
 
@@ -27,55 +24,42 @@ Report Link- https://drive.google.com/file/d/1O7i19UQc-kBeo5w8_z8NonKHHXgECiW0/v
 
 **1) Enter Job Description**   
 
-<img width="1903" height="921" alt="image" src="https://github.com/user-attachments/assets/84a53172-4f05-4e8f-a021-86bc8331624f" />
 
 **Job Description from LinkedIn which I entered**
 
-<img width="662" height="662" alt="image" src="https://github.com/user-attachments/assets/cfe71d73-2d64-4ecd-a3d3-89a6ebb8e622" />
 
 
 **2) Upload the resume**
 
 
-<img width="1875" height="887" alt="image" src="https://github.com/user-attachments/assets/6162e623-27e2-48f0-ac36-d8a6ab059e0b" />
 
 **My Resume**
 
-<img width="836" height="811" alt="image" src="https://github.com/user-attachments/assets/53971ff8-8775-4819-80f8-4ce2df86b6f2" />
 
 
 **3) Select round**
 
 
-<img width="1879" height="842" alt="image" src="https://github.com/user-attachments/assets/f8b5479b-05dc-47ec-87f0-3c228d2c5dea" />
 
 
-**4) The agent asks the question(voice is heard, this is done using Eleven Labs API, not possible to show this just by pictures, will upload a demo of this soon). Just vague answers- User can either record or submit text answers.**
+**4) The agent asks the question(voice is heard, this is done using Eleven Labs API, not possible to show this just by pictures). Just vague answers- User can either record or submit text answers.**
 
 
-<img width="1884" height="906" alt="image" src="https://github.com/user-attachments/assets/847ca6a4-80e8-4351-b637-ddba68e0d4dc" />
 
 
 **5) Relevant Answer**
 
 
-<img width="1889" height="897" alt="image" src="https://github.com/user-attachments/assets/17b22393-d00c-4e96-87e2-cab30f88fa42" />
 
 
 **6) You can see the questions are asked based on Job description and my Resume.**
 
 
-<img width="1902" height="892" alt="image" src="https://github.com/user-attachments/assets/8e1ff798-0b89-4a11-b48e-a65506cce6e5" />
+
+**7) Feedback with scores. In the end the user can see the total scores**
 
 
-**7) Feedback with scores. I just answered Q3 with relevant answer so I get highest marks for this question. Rest I got zero marks for all questions with a feedback. In teh end teh user can see the total scores**
 
-
-<img width="1878" height="837" alt="image" src="https://github.com/user-attachments/assets/b454d536-2250-4170-9734-d93d4a7fd37b" />
-
-<img width="1846" height="951" alt="image" src="https://github.com/user-attachments/assets/20355709-9129-4972-8a06-61c0494944b6" />
-
-<img width="1907" height="942" alt="image" src="https://github.com/user-attachments/assets/b26d49fc-0182-4402-a1bf-95dcec4d44f9" />
 
 **=>System Architecture**
 
@@ -118,7 +102,7 @@ Streamlit- For Frontend
 
 <img width="320" height="166" alt="image" src="https://github.com/user-attachments/assets/95084bb4-79e7-458f-bc6f-a093a7fe7113" />
 
-OPENAI API (gpt-4.1-mini)- For LLM Service
+GEMINI API (gemini-2.0-Flash & gemini-2.5-Pro)- For LLM Service
 
 <img width="274" height="106" alt="image" src="https://github.com/user-attachments/assets/899ad2c6-bdd8-45e8-8aff-abf7420b2217" />
 

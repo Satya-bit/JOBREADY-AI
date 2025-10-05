@@ -38,7 +38,7 @@ def speak_text(text: str): #text to speech
         print("Generating audio...")
         voice_obj = Voice(
             voice_id=ELEVENLABS_VOICE_ID,
-            settings=VoiceSettings(stability=0.6, similarity_boost=0.85, style=0.1, use_speaker_boost=True)
+            settings=VoiceSettings(stability=0.6, similarity_boost=0.85, style=0.9, use_speaker_boost=True)
         )
         #STABILITY=Controls consistency in tone and delivery. Higher = more stable voice
         #SIMIILARITY_BOOST=Makes the voice more similar to the original (improves realism)
