@@ -65,6 +65,7 @@ Demo Link-
 **7) Feedback with scores. In the end the user can see the total scores**
 
 <img width="1216" height="932" alt="image" src="https://github.com/user-attachments/assets/f7b19333-4b90-48ab-b2e2-5cee09334ad4" />
+<img width="1011" height="331" alt="image" src="https://github.com/user-attachments/assets/d528f91c-a23e-409b-9455-621df1444614" />
 
 **8) An example of question being asked for HR Round.**
 
@@ -88,7 +89,6 @@ Demo Link-
 **=>System Architecture**
 
 <img width="1321" height="560" alt="image" src="https://github.com/user-attachments/assets/5dba41f3-bff9-42ab-b932-399b212a23e9" />
-<img width="1011" height="331" alt="image" src="https://github.com/user-attachments/assets/d528f91c-a23e-409b-9455-621df1444614" />
 
 
 
