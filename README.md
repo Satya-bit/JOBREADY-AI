@@ -19,7 +19,7 @@ Demo Link-
 
 -Real-time coaching/candidate feedback.
 
-
+-ATS Friendly feedback and scores.
 **=>USER INTERFACE**
 
 **1) Enter Job Description**   
@@ -59,6 +59,7 @@ Demo Link-
 **7) Feedback with scores. In the end the user can see the total scores**
 
 
+**8) You can also see the ATS friendly feedback.**
 
 
 **=>System Architecture**
@@ -67,7 +68,7 @@ Demo Link-
 
 
 
-**=>Steps:**
+**=>Steps for AI MOCK INTERVIEW:**
 
 1. The user enters a job description.
 
@@ -89,8 +90,17 @@ Demo Link-
 
 10. Feedback and scores are displayed.
 
-So this way, the user gets a personalized experience based on the resume and job description. This also answers the questions: input needed, AI functionalities in the architecture, and outcomes.
+**=>Steps for ATS friendly feedback and scores:**
 
+1. Upload Job Description & Resume.
+
+2. Select any one of the below options:
+
+  - Tell me about the resume
+  - What are the keywords that are missing
+  - Percentage Match
+
+So this way, the user gets a personalized experience based on the resume and job description. 
 
 
 **=>Techstacks and libraries used**
