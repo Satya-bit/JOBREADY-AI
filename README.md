@@ -1,4 +1,4 @@
-**JOBREADY AI- AI Powered Interview agent & ATS Tracker**
+**JOBREADY AI- An AI Powered Interview agent & ATS Tracker**
 
 **=>DEMO LINK**
 
@@ -20,6 +20,7 @@ Demo Link-
 -Real-time coaching/candidate feedback.
 
 -ATS Friendly feedback and scores.
+
 **=>USER INTERFACE**
 <img width="1911" height="932" alt="image" src="https://github.com/user-attachments/assets/65443466-4159-4b31-ae87-e90de6a7652f" />
 
