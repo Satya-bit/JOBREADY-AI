@@ -88,8 +88,7 @@ Demo Link- https://drive.google.com/file/d/14ymS1Qpe5EzWkTfqXM07w7ggT1JL50Nr/vie
 
 **=>System Architecture**
 
-<img width="1321" height="560" alt="image" src="https://github.com/user-attachments/assets/5dba41f3-bff9-42ab-b932-399b212a23e9" />
-
+/mnt/data/5e71e9ad-ee0c-4a6b-b9d5-6a9076b21304.png
 
 
 **=>Steps for AI MOCK INTERVIEW:**
