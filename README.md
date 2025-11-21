@@ -86,10 +86,6 @@ Demo Link- https://drive.google.com/file/d/14ymS1Qpe5EzWkTfqXM07w7ggT1JL50Nr/vie
 
 **Note**-Only two questions are being asked in this demo. The number of questions can be increased as needed by the AI.
 
-**=>System Architecture**
-
-/mnt/data/5e71e9ad-ee0c-4a6b-b9d5-6a9076b21304.png
-
 
 **=>Steps for AI MOCK INTERVIEW:**
 
@@ -129,24 +125,18 @@ So this way, the user gets a personalized experience based on the resume and job
 **=>Techstacks and libraries used**
 Python- For Backend
 
-<img width="316" height="233" alt="image" src="https://github.com/user-attachments/assets/ff9af491-de40-4d2c-8a66-c4e658088298" />
 
 Streamlit- For Frontend
 
-<img width="320" height="166" alt="image" src="https://github.com/user-attachments/assets/95084bb4-79e7-458f-bc6f-a093a7fe7113" />
 
 GEMINI API (gemini-2.0-Flash & gemini-2.5-Pro)- For LLM Service
 
-<img width="650" height="210" alt="image" src="https://github.com/user-attachments/assets/3fdf22f9-f46e-4a88-8d04-7a7c70b85f54" />
 
 ElevenLabs(eleven_multilingual_v2)- For giving voice
 
-<img width="309" height="186" alt="image" src="https://github.com/user-attachments/assets/eb1069ee-dc25-430e-bc5d-7f1ff417d996" />
 
 Pytesseract/fitz/docx- For parsing a resume
 
-<img width="259" height="181" alt="image" src="https://github.com/user-attachments/assets/3b317937-a6f2-4740-993c-f03a46171c72" />
 
 Google Web Speech API- For transcription (when user selects to record answer.)
 
-<img width="247" height="134" alt="image" src="https://github.com/user-attachments/assets/1737a685-8e43-4de2-9eaf-1e7d05f5c415" />
